@@ -1,6 +1,7 @@
 ---
 name: Test Debugger Action
-on: 
+on:
+  push:
   pull_request:
     branches:
       - main
@@ -19,4 +20,5 @@ jobs:
       - name: Debug OIDC Claims
         uses: ./
         with:
-          audience: 'https://github.com/github'
+          # revert?
+          audience: "${{ github.server_url }}/${{ github.repository_owner }}"

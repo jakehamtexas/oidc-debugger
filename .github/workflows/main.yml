@@ -1,6 +1,7 @@
 ---
 name: Test OIDC Debugger
 on:
+  push:
   pull_request:
     branches:
       - main
@@ -16,4 +17,4 @@ jobs:
       - name: git checkout
         uses: actions/checkout@v4
       - name: run oidc-debug.go
-        run: go run cmd/oidc-debug.go -audience "https://github.com/github"
+        run: go run cmd/oidc-debug.go -audience "${{ github.server_url }}/${{ github.repository_owner }}"
